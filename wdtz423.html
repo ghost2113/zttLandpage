@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>早头条</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/withdrawal.css" />
+</head>
+<body>
+	<section id="main" style="opacity:0;-webkit-opacity: 0;">
+			<div class="btn" data-href="https://zhishun888.com/dingzhi/zaotoutiao.apk"></div>
+			<img class="withdrawal" src="./img/withdrawal.png" alt="" />
+			<p class="p1">待确认收款</p>
+			<p class="p2">￥<span class="moneyNum">0</span>.00</p>
+			<div id="dlApp" >立即提现</div>
+			<p class="p3">下载早头条APP立刻提现，1天内未确认，将退还给对方</p>
+			<div class="footer">转账时间:&nbsp;<span class="time"></span></div>
+	</section>
+	<div class="mask" onclick="hideMask()">
+		<img src="./img/weixinOpenLJTX.png" alt="" onClick="return false"/>
+	</div>
+	<iframe name="iframe"  src="" frameborder="0"></iframe>
+	<script type="text/javascript" src="./js/rem.js"></script>
+	<script type="text/javascript" src="./js/loading.js"></script>
+	<script type="text/javascript" src="./js/zepto.js"></script>
+	<script type="text/javascript" src="./js/fastclick.js"></script>
+<script src="https://s22.cnzz.com/z_stat.php?id=1274397520&web_id=1274397520" language="JavaScript"></script>
+	<script>		
+	$(function(){    
+	    FastClick.attach(document.body);  
+	});
+	var moneyNum = getUrlParams("moneyNum"),
+		time = getUrlParams("time")
+	//金额
+	$(".moneyNum").html(moneyNum);
+	//提现时间
+	$(".time").html(time);
+	//获取Url地址中userId参数
+	function getUrlParams(name) { 
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //定义正则表达式 
+	    var r = window.location.search.substr(1).match(reg);  
+	    if (r != null) return unescape(r[2]); 
+	    return null; 
+	};	
+	</script>
+	<script>
+			/**
+			 * 隐藏站长统计
+			 */
+			$("a[title='站长统计']").hide();
+            var _czc = _czc || [];
+            _czc.push(["_setAccount", "1274397520"]);
+            _czc.push(["_trackEvent", "斑马", "立即体现页面打开", "早头条", 1, "download"]);
+			var weixin = is_weixn();
+			var u = navigator.userAgent;
+		    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		    $("#dlApp").on("click",download);
+		    if(isAndroid&&(!weixin)){		    	
+		    	window.location.href = "https://zhishun888.com/tianzhuo423/zaotoutiao.apk";
+		    }
+            function download(){
+        		_czc.push(["_trackPageview", "/tianzhuo423/zaotoutiao.apk","https://zhishun888.com/"]);
+                //下载事件
+                _czc.push(["_trackEvent", "安装包", "下载点击", "早头条", 1, "download"]);
+                //解决ios 跳转appstore去除中间页
+                if(isAndroid){	            	
+	            	if(weixin){
+	            		//安卓微信打开，提示用浏览器打开
+	            		$(".mask").show(); 
+	            	}else{
+	            		//安卓不是微信打开，自动下载
+	            		window.location.href = "https://zhishun888.com/tianzhuo423/zaotoutiao.apk";
+	            	}
+		        }else if(isiOS){
+		        	//ios打开直接跳转appstore
+	        	   if(weixin){	        	   			        	   	
+						window.iframe.location.href = "https://itunes.apple.com/app/apple-store/id1403304341?pt=118950911&ct=linkedMe&mt=8";
+					}else{
+						window.location.href = "https://itunes.apple.com/app/apple-store/id1403304341?pt=118950911&ct=linkedMe&mt=8";
+					}
+		        }
+				
+			}		             	   
+            function is_weixn(){  
+			    var ua = navigator.userAgent.toLowerCase();  
+			    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			        return true;  
+			    } else {  
+			        return false;  
+			    }  
+			};
+			//关闭遮罩
+			function hideMask(){
+				$(".mask").hide();
+			}
+		</script>
+</body>
+</html>

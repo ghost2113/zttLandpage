@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>早头条</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/shareEgg.css" />
+</head>
+<body>
+	<section id="main" style="opacity:0;-webkit-opacity: 0;">	
+		<div class="money">奖金总额:&nbsp;<span class="moneyNum">0</span>元<span class="tixian" onclick="withdrawal()">提现</span></span></div>
+		<div class="container">
+			<ul class="eggList">
+				<li class="eggItem eggItem0 eggItemActive">
+					<div class="bigEgg bigEgg0"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem1 eggItemActive">
+					<div class="bigEgg bigEgg1"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem2 eggItemActive">
+					<div class="bigEgg bigEgg2"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem3 eggItemActive">
+					<div class="bigEgg bigEgg3"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem4 eggItemActive">
+					<div class="bigEgg bigEgg4"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem5 eggItemActive">
+					<div class="bigEgg bigEgg5"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem6 eggItemActive">
+					<div class="bigEgg bigEgg6"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+				<li class="eggItem eggItem7 eggItemActive">
+					<div class="bigEgg bigEgg7"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>				
+				<li class="eggItem eggItem8 eggItemActive">
+					<div class="bigEgg bigEgg8"><img  src="./img/egg_bigger.png" alt="" /></div>
+					<img class="hammer" src="./img/nuh147n9tt.gif"/>
+				</li>
+			</ul>
+		</div>
+		<div class="numWrap">剩余抽奖次数:&nbsp;<span class="num">0</span></div>
+		<!--弹出层-->
+		<!--<div id="mask"  style="display:none;">
+			<div class="maskCon">
+				<div class="maskwrap">
+					<p class="msg"></p>
+					<div class="close"><span class="btn btnText" id="close">确定</span><span class="btn withdrawal" onclick="withdrawal()">提现</div>
+				</div>
+			</div>			
+		</div>-->
+		<!--红包-->
+		<div id="mask">
+			<div class="maskCon">
+				<div class="maskwrap maskwrap1">
+					<img class="img" src="./img/2.png" alt="" />
+					<div class="close"></div>
+					<div class="tixian" onclick="withdrawal()"></div>
+				</div>		
+				<div class="maskwrap maskwrap2">
+					<img class="img" src="./img/1.png" alt="" />
+					<div class="close"></div>
+					<div class="tixian" onclick="withdrawal()"></div>
+				</div>
+				<div class="maskwrap3">
+					<img class="img" src="./img/noChange.png" alt="" />
+					<div class="close" class="close3"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript" src="./js/rem.js"></script>
+	<script type="text/javascript" src="./js/loading.js"></script>
+	<script type="text/javascript" src="./js/zepto.js"></script>
+	<script type="text/javascript" src="./js/fastclick.js"></script>
+	<script src="https://s19.cnzz.com/z_stat.php?id=1274397383&web_id=1274397383" language="JavaScript"></script>
+		<script>		
+		$(function(){    
+		    FastClick.attach(document.body);  
+		}); 
+		/**
+		 * 隐藏站长统计
+		 */
+		$("a[title='站长统计']").hide();
+		 var _czc = _czc || [];
+	    _czc.push(["_setAccount", "1274397383"]);
+	    _czc.push(["_trackPageview", "/tianzhuo423/zaotoutiao.apk","https://zhishun888.com/"]);
+	    //下载事件
+	    _czc.push(["_trackEvent", "斑马", "落地页打开", "早头条", 1, "download"]);
+		//动画
+		var count = 0;
+		var aniEgg = setInterval(function(){
+			//console.log($(".eggItemActive").length);
+			var num = $(".eggItemActive").length;
+			count==num?count=0:count
+			$(".eggItemActive").css("background-image","url(img/egg.png)")
+			$(`.eggItemActive`).eq(count).css("background-image",'url()');						
+			$(".bigEgg").hide();
+			//console.log($(`.eggItemActive`).eq(count).find(".hammer")[0].style);
+			//$(`.eggItemActive`).eq(count).find(".hammer")[0];
+			$(`.bigEgg`).eq(count).show();
+			count++;
+		},1000)
+		/**
+		 * 初始化
+		 */
+		var totalM = localStorage.getItem("totalM")?localStorage.getItem("totalM"):0,
+			  num = localStorage.getItem("num")?localStorage.getItem("num"):3;	
+		localStorage.setItem("totalM",totalM);
+		localStorage.setItem("num",num);
+		$(".moneyNum").html(totalM);
+		$(".num").html(num);
+		var moneyArr = ["2","2","1"],//奖励列表
+	          money = "";//金蛋奖励
+	          //totalM = "";//金额
+		
+		//砸金蛋	
+		$(".eggItem").on("click",function(){
+			//判断抽奖次数
+			if(num<2){
+				TJY.msg("0");
+				return;
+			}
+			//去除eggItemActive
+			$(this).removeClass("eggItemActive")
+			console.log($(this).find(".bigEgg")[0])
+			$(this).find(".bigEgg")[0].remove();
+			console.log({"num":num,"moneyArr":moneyArr[3-num],"money":money});
+			//更新新数据
+			num = localStorage.getItem("num");
+			money = moneyArr[3-num]?moneyArr[3-num]:0;
+			totalM = Number(money)+Number(totalM);
+	   		var index = $(this).index();
+	   		try {
+	   			//存储
+	   			localStorage.setItem("num",num-1);
+	   			localStorage.setItem("totalM",totalM); 
+	   			//样式改变
+	   			$(`.eggItem${index}`).find(".hammer")[0].style.display = "block";   			
+	   			var aniEgg = setTimeout(function(){
+	   				$(`.eggItem${index}`).css("background-image",'url(./img/egg.gif)');   				
+	   			},1000);	
+	   			var msg = setTimeout(function(){
+	   				if(totalM=="5"){
+	   					TJY.msg("1");
+	   				}else{
+	   					TJY.msg("2");
+	   				}
+	   			},2500);	   			
+			}
+			catch(err) {
+			   TJY.msg("网络请求出现错误","确认");
+			   $(".withdrawal").hide();
+			} 
+	   	})	
+	   	if(num==3){
+	   		$(".eggItem").eq(1).trigger("click");
+	   	}   	
+	   //关闭弹出框
+		$(".close").on("click",function(){							
+			$("#mask").hide();	
+			$(".hammer").hide();
+			//金额更新
+			$(".moneyNum").html(localStorage.getItem("totalM"));
+			//次数更新
+			$(".num").html(localStorage.getItem("num"));
+		});
+		//弹出框
+		var TJY = TJY || {};
+		TJY.msg = function(type){
+			$("#mask").show();
+			if(type==2){
+				$(".maskwrap1").show().siblings().hide();
+			}else if(type==1){
+				$(".maskwrap2").show().siblings().hide();
+			}else if(type==0){
+				$(".maskwrap3").show().siblings().hide();
+			}
+		}
+		//跳转提现页面
+		function withdrawal(){
+	        //下载事件
+	        _czc.push(["_trackEvent", "提现跳转", "下载点击", "早头条", 1, "download"]);
+			window.location.href = `./withdrawal.html?moneyNum=${totalM}&time=${getNowFormatDate()}`;
+		}
+		//获取提现时间
+		function getNowFormatDate() {
+		    var date = new Date();
+		    var seperator1 = "-";
+		    var seperator2 = ":";
+		    var month = date.getMonth() + 1;
+		    var strDate = date.getDate();
+		    if (month >= 1 && month <= 9) {
+		        month = "0" + month;
+		    }
+		    if (strDate >= 0 && strDate <= 9) {
+		        strDate = "0" + strDate;
+		    }
+		    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+		            + " " + date.getHours() + seperator2 + date.getMinutes()
+		            + seperator2 + date.getSeconds();
+		    return currentdate;
+		} 
+	</script>
+</body>
+</html>
